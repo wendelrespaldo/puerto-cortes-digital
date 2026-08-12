@@ -6,7 +6,14 @@ import {
   InstagramIcon,
   XIcon,
   YoutubeIcon,
+  WhatsappIcon,
 } from "@/components/shared/SocialIcons";
+
+const ASWEN_WHATSAPP_URL =
+  "https://wa.me/50433912922?text=" +
+  encodeURIComponent(
+    "Hola, vi el portal Puerto Cortés Digital y quiero más información."
+  );
 
 const columns: { title: string; links: { label: string; href: string }[] }[] = [
   {
@@ -137,6 +144,30 @@ export default function Footer() {
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-5 text-xs text-pc-sand-100/50 sm:flex-row sm:px-6 lg:px-8">
           <p>© {new Date().getFullYear()} Municipalidad de Puerto Cortés. Todos los derechos reservados.</p>
           <p>Demo de portal digital — prototipo de presentación.</p>
+        </div>
+      </div>
+
+      <div className="border-t border-white/5 bg-pc-navy-950 pb-16 lg:pb-0">
+        <div className="mx-auto flex max-w-7xl items-center justify-center px-4 py-4 sm:px-6 lg:px-8">
+          <a
+            href={ASWEN_WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Escribir a ASWEN GROUP por WhatsApp al 3391-2922"
+            className="group inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs text-pc-sand-100/45 transition-all duration-300 hover:bg-white/5 hover:text-pc-sand-100/80"
+          >
+            <span className="relative flex size-6 items-center justify-center rounded-full bg-white/5 text-pc-green-400/70 transition-all duration-300 group-hover:scale-110 group-hover:bg-pc-green-500/15 group-hover:text-pc-green-300">
+              <WhatsappIcon className="size-3.5" />
+              <span className="absolute inset-0 -z-10 rounded-full bg-pc-green-400/0 transition-all duration-300 group-hover:bg-pc-green-400/20 group-hover:blur-md" />
+            </span>
+            <span>
+              Diseñado por{" "}
+              <span className="relative font-semibold tracking-wide text-pc-sand-100/70 transition-colors duration-300 group-hover:text-white">
+                ASWEN GROUP
+                <span className="absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-gradient-to-r from-pc-green-400 to-pc-blue-400 transition-transform duration-300 ease-out group-hover:scale-x-100" />
+              </span>
+            </span>
+          </a>
         </div>
       </div>
     </footer>
