@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   Dialog,
@@ -14,17 +15,26 @@ import {
   Wrench,
   Newspaper,
   FileStack,
+  HardHat,
+  Palmtree,
   ArrowRight,
   X,
+  CornerDownLeft,
 } from "lucide-react";
-import { searchMock, type SearchResultGroup } from "@/data/search";
-import { popularSearches } from "@/data/services";
+import {
+  searchMock,
+  popularSearches,
+  bestMatch,
+  type SearchResultGroup,
+} from "@/data/search";
 import { cn } from "@/lib/utils";
 
 const groupIcons: Record<SearchResultGroup, React.ElementType> = {
   TRÁMITES: FileText,
   SERVICIOS: Wrench,
+  OBRAS: HardHat,
   NOTICIAS: Newspaper,
+  "PUERTO CORTÉS": Palmtree,
   DOCUMENTOS: FileStack,
 };
 
@@ -38,6 +48,7 @@ export default function SearchModal({
   initialQuery?: string;
 }) {
   const [query, setQuery] = useState(initialQuery);
+  const router = useRouter();
 
   useEffect(() => {
     if (open) setQuery(initialQuery);
@@ -45,6 +56,28 @@ export default function SearchModal({
 
   const results = useMemo(() => searchMock(query), [query]);
   const totalResults = Object.values(results).reduce((n, r) => n + r.length, 0);
+  const topMatch = useMemo(() => bestMatch(query), [query]);
+
+  function goToTopMatch() {
+    if (topMatch) {
+      router.push(topMatch.href);
+      onClose();
+    }
+  }
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    goToTopMatch();
+  }
+
+  // El Dialog de Base UI puede interceptar el keydown antes de que llegue al
+  // submit nativo del <form>, así que Enter se maneja aquí directamente.
+  function handleInputKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      goToTopMatch();
+    }
+  }
 
   return (
     <Dialog open={open} onOpenChange={(v) => !v && onClose()}>
@@ -54,7 +87,10 @@ export default function SearchModal({
       >
         <DialogTitle className="sr-only">¿Qué estás buscando?</DialogTitle>
 
-        <div className="flex items-center gap-3 border-b border-border px-5 py-4 sm:px-6">
+        <form
+          onSubmit={handleSubmit}
+          className="flex items-center gap-3 border-b border-border px-5 py-4 sm:px-6"
+        >
           <Search className="size-5 shrink-0 text-pc-green-600" aria-hidden />
           <div className="flex-1">
             <p className="text-xs font-medium text-muted-foreground">
@@ -64,19 +100,30 @@ export default function SearchModal({
               autoFocus
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Buscar trámite, servicio, noticia..."
-              aria-label="Buscar trámite, servicio, noticia o documento"
+              onKeyDown={handleInputKeyDown}
+              placeholder="Buscar trámite, servicio, obra, noticia..."
+              aria-label="Buscar trámite, servicio, obra, noticia o documento"
               className="w-full bg-transparent font-heading text-lg font-semibold text-foreground outline-none placeholder:font-normal placeholder:text-muted-foreground/70"
             />
           </div>
+          {query && topMatch && (
+            <button
+              type="submit"
+              className="hidden shrink-0 items-center gap-1.5 rounded-full bg-pc-green-100 px-3 py-1.5 text-xs font-semibold text-pc-green-800 transition hover:bg-pc-green-200 sm:flex"
+            >
+              Ir
+              <CornerDownLeft className="size-3.5" />
+            </button>
+          )}
           <button
+            type="button"
             onClick={onClose}
             aria-label="Cerrar búsqueda"
             className="rounded-full p-2 text-muted-foreground transition hover:bg-muted hover:text-foreground"
           >
             <X className="size-5" />
           </button>
-        </div>
+        </form>
 
         <div className="max-h-[60vh] overflow-y-auto px-3 py-3 sm:px-4">
           {!query && (
@@ -86,13 +133,14 @@ export default function SearchModal({
               </p>
               <div className="flex flex-wrap gap-2">
                 {popularSearches.map((term) => (
-                  <button
-                    key={term}
-                    onClick={() => setQuery(term)}
+                  <Link
+                    key={term.label}
+                    href={term.href}
+                    onClick={onClose}
                     className="rounded-full border border-border bg-muted/50 px-3.5 py-1.5 text-sm text-foreground/80 transition hover:border-pc-green-300 hover:bg-pc-green-50 hover:text-pc-green-800"
                   >
-                    {term}
-                  </button>
+                    {term.label}
+                  </Link>
                 ))}
               </div>
             </div>
@@ -137,14 +185,29 @@ export default function SearchModal({
               })}
 
               {query && totalResults === 0 && (
-                <div className="px-2 py-10 text-center">
+                <div className="px-3 py-8 text-center">
                   <p className="text-sm text-muted-foreground">
                     No encontramos resultados para{" "}
                     <span className="font-medium text-foreground">
                       &ldquo;{query}&rdquo;
                     </span>
-                    . Intenta con otro término.
+                    .
                   </p>
+                  <p className="mt-4 mb-3 text-xs font-semibold tracking-wide text-muted-foreground uppercase">
+                    Prueba con
+                  </p>
+                  <div className="flex flex-wrap justify-center gap-2">
+                    {popularSearches.slice(0, 5).map((term) => (
+                      <Link
+                        key={term.label}
+                        href={term.href}
+                        onClick={onClose}
+                        className="rounded-full border border-border bg-muted/50 px-3.5 py-1.5 text-sm text-foreground/80 transition hover:border-pc-green-300 hover:bg-pc-green-50 hover:text-pc-green-800"
+                      >
+                        {term.label}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
             </motion.div>
@@ -156,7 +219,15 @@ export default function SearchModal({
             "flex items-center justify-between border-t border-border bg-muted/40 px-5 py-2.5 text-[11px] text-muted-foreground sm:px-6"
           )}
         >
-          <span>Presiona ESC para cerrar</span>
+          <span className="flex items-center gap-3">
+            <span>ESC para cerrar</span>
+            {topMatch && (
+              <span className="hidden items-center gap-1 sm:flex">
+                <CornerDownLeft className="size-3" />
+                para ir a &ldquo;{topMatch.title}&rdquo;
+              </span>
+            )}
+          </span>
           <span>Puerto Cortés Digital</span>
         </div>
       </DialogContent>

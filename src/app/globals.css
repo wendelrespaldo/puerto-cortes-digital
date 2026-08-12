@@ -57,6 +57,7 @@
   --animate-float: float 7s ease-in-out infinite;
   --animate-float-delay: float 7s ease-in-out 2.5s infinite;
   --animate-blob: blob 16s ease-in-out infinite;
+  --animate-kenburns: kenburns 26s ease-in-out infinite alternate;
 
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -192,6 +193,15 @@
       black calc(100% - 48px),
       transparent 100%
     );
+  }
+}
+
+@keyframes kenburns {
+  from {
+    transform: scale(1) translate(0, 0);
+  }
+  to {
+    transform: scale(1.06) translate(-1%, -1%);
   }
 }
 

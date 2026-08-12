@@ -18,12 +18,10 @@ import {
   Palette,
   Leaf,
   Trophy,
-  Newspaper,
-  Map,
   ShieldCheck,
   Building2,
-  BookOpen,
 } from "lucide-react";
+import { tourismCategories } from "./tourism";
 
 export type MegaMenuLink = {
   label: string;
@@ -40,6 +38,8 @@ export type MegaMenuGroup = {
 export type NavItem = {
   label: string;
   href: string;
+  /** Da un acento visual sutil al link y activa el mega menú de preview fotográfico. */
+  highlight?: boolean;
   megaMenu?: {
     tagline: string;
     groups: MegaMenuGroup[];
@@ -227,50 +227,26 @@ export const mainNav: NavItem[] = [
   {
     label: "Puerto Cortés",
     href: "/turismo",
+    highlight: true,
     megaMenu: {
-      tagline: "Descubre la ciudad que respira Caribe.",
+      tagline: "Mar, historia y sabor caribeño.",
       groups: [
         {
-          title: "Explora",
-          links: [
-            {
-              label: "Playas",
-              href: "/turismo#playas",
-              description: "Costa, arena y atardeceres.",
-              icon: Map,
-            },
-            {
-              label: "Cultura y Turismo",
-              href: "/turismo",
-              description: "Historia, gastronomía y tradición.",
-              icon: Palette,
-            },
-            {
-              label: "Información geográfica",
-              href: "/transparencia#geografia",
-              description: "Mapas y datos territoriales.",
-              icon: Map,
-            },
-          ],
-        },
-        {
-          title: "Institucional",
-          links: [
-            {
-              label: "Sala de prensa",
-              href: "/noticias#prensa",
-              description: "Boletines y comunicados oficiales.",
-              icon: Newspaper,
-            },
-            {
-              label: "Documentos",
-              href: "/transparencia#documentos",
-              description: "Plan de arbitrios y normativa.",
-              icon: BookOpen,
-            },
-          ],
+          title: "Descubre Puerto Cortés",
+          links: tourismCategories.map((cat) => ({
+            label: cat.title,
+            href: `/turismo#${cat.id}`,
+            description: cat.description,
+            icon: cat.icon,
+          })),
         },
       ],
+      featured: {
+        title: "Destino Puerto Cortés",
+        description: "Playas, cultura, gastronomía y el puerto que le da nombre a la ciudad.",
+        href: "/turismo",
+        cta: "Descubrir Puerto Cortés",
+      },
     },
   },
   {

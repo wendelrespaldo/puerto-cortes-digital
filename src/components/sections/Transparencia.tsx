@@ -35,9 +35,9 @@ export default function Transparencia() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.45, delay: i * 0.06 }}
-                className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm"
+                className="group rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-pc-green-400/30 hover:bg-white/10"
               >
-                <span className="flex size-10 items-center justify-center rounded-xl bg-pc-green-500/20 text-pc-green-300">
+                <span className="flex size-10 items-center justify-center rounded-xl bg-pc-green-500/20 text-pc-green-300 transition-colors group-hover:bg-pc-green-500 group-hover:text-white">
                   <item.icon className="size-5" />
                 </span>
                 <p className="mt-4 font-heading text-xl font-bold text-white">{item.value}</p>
@@ -58,15 +58,18 @@ export default function Transparencia() {
             <p className="text-xs text-white/50">Porcentaje ejecutado por trimestre, 2026</p>
             <div className="mt-6 flex flex-1 items-end justify-between gap-3">
               {executionByQuarter.map((bar, i) => (
-                <div key={bar.label} className="flex flex-1 flex-col items-center gap-2">
-                  <div className="flex h-32 w-full items-end overflow-hidden rounded-lg bg-white/5">
+                <div key={bar.label} className="group flex flex-1 flex-col items-center gap-2">
+                  <div className="relative flex h-32 w-full items-end overflow-hidden rounded-lg bg-white/5">
                     <motion.div
                       initial={{ height: 0 }}
                       whileInView={{ height: `${bar.value}%` }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.8, delay: i * 0.1, ease: "easeOut" }}
-                      className="w-full rounded-lg bg-gradient-to-t from-pc-green-600 to-pc-green-300"
+                      className="w-full rounded-lg bg-gradient-to-t from-pc-green-600 to-pc-green-300 transition-[filter] duration-300 group-hover:brightness-110"
                     />
+                    <span className="pointer-events-none absolute inset-x-0 top-1.5 text-center text-[11px] font-bold text-white opacity-0 transition-opacity group-hover:opacity-100">
+                      {bar.value}%
+                    </span>
                   </div>
                   <span className="text-xs font-semibold text-white/70">{bar.label}</span>
                 </div>

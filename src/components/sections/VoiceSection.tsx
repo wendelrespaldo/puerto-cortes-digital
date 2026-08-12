@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Megaphone, Lightbulb, MessageSquareHeart, ArrowRight } from "lucide-react";
+import { Megaphone, Lightbulb, MessageSquareHeart, ArrowRight, Users } from "lucide-react";
 import SectionHeading from "@/components/shared/SectionHeading";
 
 const actions = [
@@ -50,7 +50,13 @@ export default function VoiceSection() {
           align="center"
         />
 
-        <div className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-5 sm:grid-cols-3">
+        <div className="mx-auto mt-10 max-w-4xl rounded-[2rem] border border-pc-green-100 bg-pc-sand-50/60 p-4 sm:p-6">
+          <span className="mx-auto mb-6 flex w-fit items-center gap-2 rounded-full bg-white px-4 py-1.5 text-xs font-semibold tracking-wide text-pc-green-700 uppercase shadow-sm">
+            <Users className="size-3.5" />
+            Centro de participación ciudadana
+          </span>
+
+        <div className="mx-auto grid max-w-4xl grid-cols-1 gap-5 sm:grid-cols-3">
           {actions.map((action, i) => (
             <motion.div
               key={action.title}
@@ -79,6 +85,7 @@ export default function VoiceSection() {
               </Link>
             </motion.div>
           ))}
+        </div>
         </div>
       </div>
     </section>

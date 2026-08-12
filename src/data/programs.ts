@@ -58,52 +58,6 @@ export const programs: Program[] = [
   },
 ];
 
-export type TourismItem = {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  icon: "playas" | "naturaleza" | "gastronomia" | "cultura" | "turismo";
-};
-
-export const tourismItems: TourismItem[] = [
-  {
-    id: "playas",
-    title: "Playas",
-    description: "Costa caribeña, arena dorada y atardeceres inolvidables.",
-    image: "/images/turismo/atardecer-puerto.jpg",
-    icon: "playas",
-  },
-  {
-    id: "naturaleza",
-    title: "Naturaleza",
-    description: "Lagunas, manglares y biodiversidad a minutos del centro.",
-    image: "/images/turismo/playa-comunidad.jpg",
-    icon: "naturaleza",
-  },
-  {
-    id: "gastronomia",
-    title: "Gastronomía",
-    description: "Sabor caribeño: mariscos, coco y sazón porteña.",
-    image: "/images/municipalidad/palacio-municipal-1.jpg",
-    icon: "gastronomia",
-  },
-  {
-    id: "cultura",
-    title: "Cultura",
-    description: "Tradición, música y el orgullo de ser porteño.",
-    image: "/images/obras/pavimentacion-la-roca.jpg",
-    icon: "cultura",
-  },
-  {
-    id: "turismo",
-    title: "Turismo",
-    description: "El primer puerto de Honduras, puerta al Caribe.",
-    image: "/images/economia/puerto-cargo-ship.jpg",
-    icon: "turismo",
-  },
-];
-
 export type MunicipalSystem = {
   id: string;
   title: string;

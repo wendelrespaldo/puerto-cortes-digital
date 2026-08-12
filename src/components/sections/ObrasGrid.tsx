@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MapPin } from "lucide-react";
 import { projects, statusLabels, type ProjectStatus } from "@/data/projects";
 import ProgressBar from "@/components/shared/ProgressBar";
+import AnimatedCounter from "@/components/shared/AnimatedCounter";
 import { cn } from "@/lib/utils";
 
 const filters: { id: ProjectStatus | "todas"; label: string }[] = [
@@ -57,7 +58,7 @@ export default function ObrasGrid() {
               return (
                 <div
                   key={project.id}
-                  className="group overflow-hidden rounded-3xl border border-border bg-white shadow-sm transition hover:shadow-xl"
+                  className="group overflow-hidden rounded-3xl border border-border bg-white shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl"
                 >
                   <div className="relative h-48 overflow-hidden">
                     <Image
@@ -88,7 +89,11 @@ export default function ObrasGrid() {
                     <div className="mt-3">
                       <div className="mb-1.5 flex items-center justify-between text-xs text-muted-foreground">
                         <span>Avance de obra</span>
-                        <span className="font-semibold text-foreground">{project.progress}%</span>
+                        <AnimatedCounter
+                          value={project.progress}
+                          suffix="%"
+                          className="font-semibold text-foreground"
+                        />
                       </div>
                       <ProgressBar value={project.progress} />
                     </div>

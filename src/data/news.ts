@@ -92,10 +92,10 @@ export const news: NewsItem[] = [
   },
 ];
 
-export const newsTicker: { id: string; text: string }[] = [
-  { id: "t1", text: "Municipalidad inicia nueva obra de infraestructura en El Sofoco" },
-  { id: "t2", text: "El pago de impuestos contribuye al desarrollo de Puerto Cortés" },
-  { id: "t3", text: "IMDEPOR inaugura nueva piscina municipal semiolímpica" },
-  { id: "t4", text: "Jornada 'Playas Limpias' recolecta más de dos toneladas de desechos" },
-  { id: "t5", text: "Alcaldía presenta cartera de proyectos para el segundo semestre" },
-];
+/**
+ * La cinta "AHORA" reutiliza las noticias reales (mismo id) para que cada
+ * titular lleve directo a su tarjeta correspondiente en /noticias.
+ */
+export const newsTicker: { id: string; text: string }[] = news
+  .slice(0, 6)
+  .map((n) => ({ id: n.id, text: n.title }));

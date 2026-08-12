@@ -27,7 +27,7 @@ export default function NewsTicker() {
           {items.map((item, i) => (
             <Link
               key={`${item.id}-${i}`}
-              href="/noticias"
+              href={`/noticias#${item.id}`}
               className="flex items-center gap-2 text-sm font-medium text-pc-sand-100/85 transition hover:text-pc-amber-400"
             >
               <span className="size-1 rounded-full bg-pc-green-500" />

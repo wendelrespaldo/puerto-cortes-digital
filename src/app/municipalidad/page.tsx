@@ -1,6 +1,18 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Landmark, TrendingUp, Leaf, Trophy, Phone, Mail, MapPin, Clock } from "lucide-react";
+import Link from "next/link";
+import {
+  Landmark,
+  TrendingUp,
+  Leaf,
+  Trophy,
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  ArrowRight,
+  BadgeCheck,
+} from "lucide-react";
 import PageHero from "@/components/shared/PageHero";
 import SectionHeading from "@/components/shared/SectionHeading";
 import Programs from "@/components/sections/Programs";
@@ -67,6 +79,44 @@ export default function MunicipalidadPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent" />
       </section>
 
+      <section className="bg-pc-sand-50 py-16 sm:py-20">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="overflow-hidden rounded-3xl border border-border bg-white shadow-lg shadow-pc-green-950/5">
+            <div className="grid grid-cols-1 sm:grid-cols-[220px_1fr]">
+              <div className="relative flex items-center justify-center bg-gradient-to-br from-pc-green-700 via-pc-green-800 to-pc-navy-900 p-8 sm:p-6">
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute -right-8 -top-8 size-32 animate-blob bg-white/10"
+                />
+                <div className="relative flex size-28 items-center justify-center rounded-full bg-white/10 ring-4 ring-white/15 sm:size-32">
+                  <span className="font-heading text-4xl font-bold text-white">GR</span>
+                </div>
+              </div>
+              <div className="flex flex-col justify-center p-6 sm:p-8">
+                <span className="mb-2 inline-flex w-fit items-center gap-1.5 rounded-full bg-pc-green-100 px-3 py-1 text-xs font-semibold tracking-wide text-pc-green-700 uppercase">
+                  <BadgeCheck className="size-3.5" />
+                  Alcalde Municipal
+                </span>
+                <h2 className="font-heading text-2xl font-bold text-foreground sm:text-3xl">
+                  Giancarlo Rodríguez
+                </h2>
+                <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+                  Al frente de una gestión comprometida con la transparencia, la
+                  inversión pública y un municipio cada vez más cercano a su gente.
+                </p>
+                <Link
+                  href="#gestion"
+                  className="group mt-5 inline-flex w-fit items-center gap-1.5 rounded-full bg-pc-green-700 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-pc-green-800"
+                >
+                  Conocer la gestión
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="bg-white py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading eyebrow="Institución" title="Cómo funciona la municipalidad" />
@@ -104,7 +154,7 @@ export default function MunicipalidadPage() {
             {[
               { icon: Phone, label: "Teléfono", value: "(504) 2755-2560" },
               { icon: Mail, label: "Correo", value: "info@ampuertocortes.hn" },
-              { icon: MapPin, label: "Dirección", value: "Barrio Casco Urbano, Puerto Cortés" },
+              { icon: MapPin, label: "Dirección", value: "Barrio la Curva, Puerto Cortés" },
               { icon: Clock, label: "Horario", value: "Lunes a viernes, 8:00 a.m. – 4:00 p.m." },
             ].map((c) => (
               <div key={c.label} className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-5">

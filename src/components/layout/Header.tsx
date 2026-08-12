@@ -3,12 +3,14 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { AnimatePresence } from "framer-motion";
-import { Phone, Search, UserRound, Menu, ChevronDown } from "lucide-react";
+import { Phone, Search, UserRound, Menu, ChevronDown, Palmtree } from "lucide-react";
 import { FacebookIcon, InstagramIcon, XIcon } from "@/components/shared/SocialIcons";
 import { mainNav } from "@/data/nav";
 import { useSearch } from "@/components/shared/SearchProvider";
 import MegaMenu from "@/components/layout/MegaMenu";
+import TourismMegaMenu from "@/components/layout/TourismMegaMenu";
 import MobileMenu from "@/components/layout/MobileMenu";
 import { cn } from "@/lib/utils";
 
@@ -18,6 +20,14 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { openSearch } = useSearch();
+  const pathname = usePathname();
+
+  // El Header no se desmonta entre rutas (vive en el layout raíz), así que
+  // cualquier mega menú o el panel móvil deben cerrarse al cambiar de página.
+  useEffect(() => {
+    setOpenMenu(null);
+    setMobileOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     function onScroll() {
@@ -111,11 +121,18 @@ export default function Header() {
                   <Link
                     href={item.href}
                     className={cn(
-                      "flex items-center gap-1 rounded-full px-3.5 py-2 text-sm font-medium text-foreground/80 transition-colors hover:bg-pc-green-50 hover:text-pc-green-800",
-                      openMenu === item.label && "bg-pc-green-50 text-pc-green-800"
+                      "flex items-center gap-1.5 rounded-full px-3.5 py-2 text-sm font-medium transition-colors",
+                      item.highlight
+                        ? "text-pc-blue-700 hover:bg-pc-blue-50"
+                        : "text-foreground/80 hover:bg-pc-green-50 hover:text-pc-green-800",
+                      openMenu === item.label &&
+                        (item.highlight ? "bg-pc-blue-50" : "bg-pc-green-50 text-pc-green-800")
                     )}
                   >
-                    {item.label}
+                    {item.highlight && <Palmtree className="size-3.5 text-pc-amber-500" />}
+                    <span className={item.highlight ? "font-semibold" : undefined}>
+                      {item.label}
+                    </span>
                     {item.megaMenu && (
                       <ChevronDown
                         className={cn(
@@ -165,7 +182,11 @@ export default function Header() {
         <AnimatePresence>
           {activeItem && (
             <div onMouseEnter={() => handleEnter(activeItem.label)} onMouseLeave={handleLeave}>
-              <MegaMenu item={activeItem} onNavigate={() => setOpenMenu(null)} />
+              {activeItem.highlight ? (
+                <TourismMegaMenu onNavigate={() => setOpenMenu(null)} />
+              ) : (
+                <MegaMenu item={activeItem} onNavigate={() => setOpenMenu(null)} />
+              )}
             </div>
           )}
         </AnimatePresence>

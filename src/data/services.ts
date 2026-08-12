@@ -95,13 +95,3 @@ export const services: Service[] = [
   },
 ];
 
-export const popularSearches: string[] = [
-  "Pago de impuestos",
-  "Permiso de construcción",
-  "Solvencia municipal",
-  "Recolección de basura",
-  "Agua",
-  "Trámites",
-  "Denuncias",
-  "Plan de arbitrios",
-];

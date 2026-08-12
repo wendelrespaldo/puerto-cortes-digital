@@ -99,7 +99,7 @@ export default function Footer() {
               </p>
               <p className="flex items-start gap-2.5">
                 <MapPin className="mt-0.5 size-4 shrink-0 text-pc-green-400" />
-                Barrio Casco Urbano, Puerto Cortés, Cortés, Honduras
+                Barrio la Curva, Puerto Cortés, Cortés, Honduras
               </p>
               <p className="flex items-center gap-2.5">
                 <Clock className="size-4 shrink-0 text-pc-green-400" />

@@ -23,13 +23,13 @@ export default function Hero() {
 
   return (
     <section ref={ref} className="relative flex min-h-[92vh] items-center overflow-hidden bg-pc-navy-950">
-      <motion.div style={{ y }} className="absolute inset-0">
+      <motion.div style={{ y }} className="absolute inset-0 overflow-hidden">
         <Image
           src="/images/hero/hero-ciudad-mar.jpg"
           alt="Vista aérea de Puerto Cortés hacia el mar Caribe"
           fill
           priority
-          className="object-cover"
+          className="animate-kenburns object-cover"
           sizes="100vw"
         />
       </motion.div>
@@ -101,20 +101,28 @@ export default function Hero() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 22 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.32 }}
+          initial="hidden"
+          animate="show"
+          transition={{ delayChildren: 0.34, staggerChildren: 0.06 }}
           className="mt-5 flex flex-wrap gap-2.5"
         >
           {quickLinks.map((link) => (
-            <Link
+            <motion.div
               key={link.label}
-              href={link.href}
-              className="group flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition hover:border-pc-amber-400/60 hover:bg-pc-amber-400/15"
+              variants={{
+                hidden: { opacity: 0, y: 14, scale: 0.95 },
+                show: { opacity: 1, y: 0, scale: 1 },
+              }}
+              transition={{ duration: 0.4 }}
             >
-              <link.icon className="size-4 text-pc-amber-400" />
-              {link.label}
-            </Link>
+              <Link
+                href={link.href}
+                className="group flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition hover:-translate-y-0.5 hover:border-pc-amber-400/60 hover:bg-pc-amber-400/15"
+              >
+                <link.icon className="size-4 text-pc-amber-400" />
+                {link.label}
+              </Link>
+            </motion.div>
           ))}
         </motion.div>
       </motion.div>

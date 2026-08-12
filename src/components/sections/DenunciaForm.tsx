@@ -9,6 +9,7 @@ const categories = ["Infraestructura", "Desechos sólidos", "Ruido", "Agua", "Ot
 
 export default function DenunciaForm() {
   const [sent, setSent] = useState(false);
+  const [folio, setFolio] = useState("");
 
   return (
     <section className="bg-white py-20" id="denuncias">
@@ -34,7 +35,7 @@ export default function DenunciaForm() {
               </p>
               <p className="mt-1 max-w-sm text-sm text-pc-green-700/80">
                 Hemos recibido tu reporte con el folio{" "}
-                <strong>PC-DEN-{Math.floor(1000 + Math.random() * 9000)}</strong>. Te
+                <strong>PC-DEN-{folio}</strong>. Te
                 contactaremos si necesitamos más información.
               </p>
               <button
@@ -52,6 +53,7 @@ export default function DenunciaForm() {
               exit={{ opacity: 0 }}
               onSubmit={(e) => {
                 e.preventDefault();
+                setFolio(String(Math.floor(1000 + Math.random() * 9000)));
                 setSent(true);
               }}
               className="mt-8 space-y-4 rounded-3xl border border-border bg-white p-6 shadow-sm sm:p-8"

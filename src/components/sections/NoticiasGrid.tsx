@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -43,6 +43,16 @@ export default function NoticiasGrid() {
     [active]
   );
 
+  // La grilla se filtra en el cliente, así que el navegador puede intentar
+  // saltar al #hash antes de que el contenido termine de hidratarse. Se
+  // reintenta el scroll una vez montado.
+  useEffect(() => {
+    if (!window.location.hash) return;
+    const id = window.location.hash.slice(1);
+    const el = document.getElementById(id);
+    el?.scrollIntoView({ block: "start" });
+  }, []);
+
   return (
     <section className="bg-white py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -75,8 +85,9 @@ export default function NoticiasGrid() {
             {filtered.map((item) => (
               <Link
                 key={item.id}
+                id={item.id}
                 href="/noticias"
-                className="group flex flex-col overflow-hidden rounded-3xl border border-border/70 bg-white transition hover:shadow-xl"
+                className="group scroll-mt-28 flex flex-col overflow-hidden rounded-3xl border border-border/70 bg-white transition hover:shadow-xl"
               >
                 <div className="relative h-48 overflow-hidden">
                   <Image

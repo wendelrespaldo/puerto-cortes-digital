@@ -7,6 +7,7 @@ import { ArrowRight, MapPin, Map as MapIcon } from "lucide-react";
 import { projects, statusLabels } from "@/data/projects";
 import SectionHeading from "@/components/shared/SectionHeading";
 import ProgressBar from "@/components/shared/ProgressBar";
+import AnimatedCounter from "@/components/shared/AnimatedCounter";
 
 export default function Obras() {
   const featured = projects.slice(0, 3);
@@ -48,7 +49,7 @@ export default function Obras() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="group overflow-hidden rounded-3xl bg-pc-navy-800/60 ring-1 ring-white/10 transition hover:ring-pc-green-400/40"
+                className="group overflow-hidden rounded-3xl bg-pc-navy-800/60 ring-1 ring-white/10 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-pc-green-950/40 hover:ring-pc-green-400/40"
               >
                 <div className="relative h-52 overflow-hidden">
                   <Image
@@ -77,10 +78,21 @@ export default function Obras() {
                   <p className="mt-1 text-sm font-semibold text-pc-amber-400">
                     {project.investment}
                   </p>
+
+                  <div className="grid grid-rows-[0fr] overflow-hidden transition-all duration-300 group-hover:mt-2 group-hover:grid-rows-[1fr]">
+                    <p className="min-h-0 text-xs leading-relaxed text-white/60">
+                      {project.description}
+                    </p>
+                  </div>
+
                   <div className="mt-4">
                     <div className="mb-1.5 flex items-center justify-between text-xs text-white/60">
                       <span>Avance de obra</span>
-                      <span className="font-semibold text-white">{project.progress}%</span>
+                      <AnimatedCounter
+                        value={project.progress}
+                        suffix="%"
+                        className="font-semibold text-white"
+                      />
                     </div>
                     <ProgressBar value={project.progress} className="bg-white/10" />
                   </div>
