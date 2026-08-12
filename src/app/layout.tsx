@@ -32,7 +32,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${heading.variable} ${body.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        <TooltipProvider delayDuration={200}>
+        <TooltipProvider delay={200}>
           <SearchProvider>
             <a
               href="#main-content"
