@@ -37,8 +37,8 @@ export default function TourismStory() {
       {/* Hero turístico */}
       <section className="relative flex min-h-[70vh] items-end overflow-hidden bg-pc-navy-950">
         <Image
-          src="/images/hero/hero-ciudad-mar.jpg"
-          alt="Vista de Puerto Cortés hacia el mar Caribe"
+          src="/images/turismo/playa-aerea.jpg"
+          alt="Vista aérea de la playa y el pueblo de Puerto Cortés"
           fill
           priority
           sizes="100vw"

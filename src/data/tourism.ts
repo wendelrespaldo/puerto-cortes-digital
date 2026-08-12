@@ -55,7 +55,7 @@ export const tourismCategories: TourismCategory[] = [
     longText:
       "La cocina porteña lleva la huella garífuna: machuca de plátano, casabe de yuca, sopa de caracol y pescado fresco del Caribe, preparados con coco, siguiendo recetas que se transmiten de generación en generación.",
     icon: UtensilsCrossed,
-    image: null,
+    image: "/images/turismo/gastronomia-mariscos.jpg",
     gradient: "from-pc-amber-500 to-pc-coral-600",
   },
   {
@@ -77,7 +77,7 @@ export const tourismCategories: TourismCategory[] = [
     longText:
       "A 157 años de su fundación, Puerto Cortés combina su papel como el puerto más importante de Honduras con playas, humedales y una identidad caribeña que la distingue de cualquier otra ciudad del país.",
     icon: Compass,
-    image: "/images/hero/hero-ciudad-mar.jpg",
+    image: "/images/turismo/playa-aerea.jpg",
     gradient: "from-pc-green-700 to-pc-blue-800",
   },
   {
