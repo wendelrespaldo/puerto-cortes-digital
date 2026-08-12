@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -13,6 +12,7 @@ import {
   Clock,
   UserRound,
 } from "lucide-react";
+import ComingSoonButton from "@/components/shared/ComingSoonButton";
 import SectionHeading from "@/components/shared/SectionHeading";
 import { cn } from "@/lib/utils";
 
@@ -85,14 +85,14 @@ export default function CitizenDashboard() {
                 </li>
               ))}
             </ul>
-            <Link
-              href="#"
+            <ComingSoonButton
               className="group mt-8 inline-flex items-center gap-2 rounded-full bg-pc-green-700 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-pc-green-900/20 transition hover:bg-pc-green-800"
+              message="El acceso ciudadano se conectará en la próxima fase"
             >
               <UserRound className="size-4.5" />
               Entrar al Portal Ciudadano
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-            </Link>
+            </ComingSoonButton>
           </div>
 
           <motion.div

@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { FileText, Download, Map } from "lucide-react";
 import PageHero from "@/components/shared/PageHero";
 import SectionHeading from "@/components/shared/SectionHeading";
 import Transparencia from "@/components/sections/Transparencia";
 import MunicipalSystems from "@/components/sections/MunicipalSystems";
+import ComingSoonButton from "@/components/shared/ComingSoonButton";
 
 export const metadata: Metadata = {
   title: "Transparencia — Puerto Cortés Digital",
@@ -62,13 +62,10 @@ export default function TransparenciaPage() {
             subtitle="Consulta las tasas y tributos municipales vigentes para el presente año."
             align="center"
           />
-          <Link
-            href="#"
-            className="mt-6 inline-flex items-center gap-2 rounded-full bg-pc-green-700 px-6 py-3 text-sm font-semibold text-white hover:bg-pc-green-800"
-          >
+          <ComingSoonButton className="mt-6 inline-flex items-center gap-2 rounded-full bg-pc-green-700 px-6 py-3 text-sm font-semibold text-white hover:bg-pc-green-800">
             <Download className="size-4.5" />
             Descargar Plan de Arbitrios 2026
-          </Link>
+          </ComingSoonButton>
         </div>
       </section>
 
@@ -77,17 +74,16 @@ export default function TransparenciaPage() {
           <SectionHeading eyebrow="Documentos" title="Documentos públicos" align="center" />
           <div className="mx-auto mt-8 max-w-2xl divide-y divide-border overflow-hidden rounded-3xl border border-border">
             {documentos.map((d) => (
-              <Link
+              <ComingSoonButton
                 key={d}
-                href="#"
-                className="flex items-center justify-between gap-4 bg-white px-6 py-4 transition hover:bg-pc-green-50"
+                className="flex w-full items-center justify-between gap-4 bg-white px-6 py-4 text-left transition hover:bg-pc-green-50"
               >
                 <span className="flex items-center gap-3 text-sm font-medium text-foreground/85">
                   <FileText className="size-4.5 text-pc-green-600" />
                   {d}
                 </span>
                 <span className="text-xs font-semibold text-pc-green-700">Descargar</span>
-              </Link>
+              </ComingSoonButton>
             ))}
           </div>
         </div>

@@ -82,15 +82,17 @@ export default function MunicipalidadPage() {
       <section className="bg-pc-sand-50 py-16 sm:py-20">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <div className="overflow-hidden rounded-3xl border border-border bg-white shadow-lg shadow-pc-green-950/5">
-            <div className="grid grid-cols-1 sm:grid-cols-[220px_1fr]">
-              <div className="relative flex items-center justify-center bg-gradient-to-br from-pc-green-700 via-pc-green-800 to-pc-navy-900 p-8 sm:p-6">
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute -right-8 -top-8 size-32 animate-blob bg-white/10"
+            <div className="grid grid-cols-1 sm:grid-cols-[300px_1fr]">
+              <div className="relative h-64 overflow-hidden bg-pc-navy-900 sm:h-auto">
+                <Image
+                  src="/images/municipalidad/alcalde-giancarlo-rodriguez.jpg"
+                  alt="Giancarlo Rodríguez, Alcalde Municipal de Puerto Cortés"
+                  fill
+                  sizes="(min-width: 640px) 300px, 100vw"
+                  className="object-cover object-[65%_18%]"
+                  priority
                 />
-                <div className="relative flex size-28 items-center justify-center rounded-full bg-white/10 ring-4 ring-white/15 sm:size-32">
-                  <span className="font-heading text-4xl font-bold text-white">GR</span>
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-pc-navy-950/50 via-transparent to-transparent sm:bg-gradient-to-r" />
               </div>
               <div className="flex flex-col justify-center p-6 sm:p-8">
                 <span className="mb-2 inline-flex w-fit items-center gap-1.5 rounded-full bg-pc-green-100 px-3 py-1 text-xs font-semibold tracking-wide text-pc-green-700 uppercase">

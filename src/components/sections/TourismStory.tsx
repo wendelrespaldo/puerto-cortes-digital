@@ -7,6 +7,11 @@ import { motion } from "framer-motion";
 import { ArrowRight, Compass, ChevronRight } from "lucide-react";
 import { tourismCategories } from "@/data/tourism";
 import { cn } from "@/lib/utils";
+import HistoryArticle from "@/components/sections/HistoryArticle";
+import CityStats from "@/components/sections/CityStats";
+import LiveTraditions from "@/components/sections/LiveTraditions";
+import MiniStories from "@/components/sections/MiniStories";
+import ExploreMap from "@/components/sections/ExploreMap";
 
 export default function TourismStory() {
   const [active, setActive] = useState(tourismCategories[0].id);
@@ -98,6 +103,8 @@ export default function TourismStory() {
         </div>
       </div>
 
+      <HistoryArticle />
+
       {/* Bloques editoriales por categoría */}
       {tourismCategories.map((cat, i) => {
         const reverse = i % 2 === 1;
@@ -153,7 +160,7 @@ export default function TourismStory() {
                     {cat.title}
                   </h2>
                   <p className="mt-4 max-w-md text-base leading-relaxed text-muted-foreground">
-                    {cat.description}
+                    {cat.longText}
                   </p>
                 </motion.div>
               </div>
@@ -161,6 +168,11 @@ export default function TourismStory() {
           </section>
         );
       })}
+
+      <CityStats />
+      <LiveTraditions />
+      <MiniStories />
+      <ExploreMap />
 
       {/* Cierre */}
       <section className="relative overflow-hidden bg-pc-navy-950 py-20 text-center text-white">

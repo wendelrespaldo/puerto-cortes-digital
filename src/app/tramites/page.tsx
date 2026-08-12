@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { FileText, FileSpreadsheet, ClipboardCheck, Wallet, Home, Store } from "lucide-react";
 import PageHero from "@/components/shared/PageHero";
 import SectionHeading from "@/components/shared/SectionHeading";
@@ -7,6 +6,7 @@ import ConsultaTramite from "@/components/sections/ConsultaTramite";
 import DenunciaForm from "@/components/sections/DenunciaForm";
 import VoiceSection from "@/components/sections/VoiceSection";
 import CitizenDashboard from "@/components/sections/CitizenDashboard";
+import ComingSoonButton from "@/components/shared/ComingSoonButton";
 
 export const metadata: Metadata = {
   title: "Trámites y permisos — Puerto Cortés Digital",
@@ -119,17 +119,16 @@ export default function TramitesPage() {
           <SectionHeading eyebrow="Descargables" title="Formularios" align="center" />
           <div className="mx-auto mt-10 max-w-2xl divide-y divide-border overflow-hidden rounded-3xl border border-border">
             {formularios.map((f) => (
-              <Link
+              <ComingSoonButton
                 key={f}
-                href="#"
-                className="flex items-center justify-between gap-4 bg-white px-6 py-4 transition hover:bg-pc-green-50"
+                className="flex w-full items-center justify-between gap-4 bg-white px-6 py-4 text-left transition hover:bg-pc-green-50"
               >
                 <span className="flex items-center gap-3 text-sm font-medium text-foreground/85">
                   <FileSpreadsheet className="size-4.5 text-pc-green-600" />
                   {f}
                 </span>
                 <span className="text-xs font-semibold text-pc-green-700">Descargar PDF</span>
-              </Link>
+              </ComingSoonButton>
             ))}
           </div>
         </div>
