@@ -107,7 +107,7 @@ export default function MunicipalidadPage() {
                   inversión pública y un municipio cada vez más cercano a su gente.
                 </p>
                 <Link
-                  href="#gestion"
+                  href="/gestion-alcalde"
                   className="group mt-5 inline-flex w-fit items-center gap-1.5 rounded-full bg-pc-green-700 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-pc-green-800"
                 >
                   Conocer la gestión

@@ -4,7 +4,6 @@ import QuickActions from "@/components/sections/QuickActions";
 import PopularSearches from "@/components/sections/PopularSearches";
 import CitizenDashboard from "@/components/sections/CitizenDashboard";
 import Obras from "@/components/sections/Obras";
-import ProjectMap from "@/components/sections/ProjectMap";
 import Noticias from "@/components/sections/Noticias";
 import NewsCarousel from "@/components/sections/NewsCarousel";
 import Transparencia from "@/components/sections/Transparencia";
@@ -22,7 +21,6 @@ export default function Home() {
       <PopularSearches />
       <CitizenDashboard />
       <Obras />
-      <ProjectMap />
       <Noticias />
       <NewsCarousel />
       <Transparencia />

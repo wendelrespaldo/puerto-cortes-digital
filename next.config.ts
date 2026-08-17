@@ -7,6 +7,20 @@ const nextConfig: NextConfig = {
     // imágenes originales directamente para evitar el bug del filesystem.
     unoptimized: true,
   },
+  async redirects() {
+    return [
+      {
+        source: "/obras",
+        destination: "/gestion-alcalde",
+        permanent: true,
+      },
+      {
+        source: "/obras/:path*",
+        destination: "/gestion-alcalde",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

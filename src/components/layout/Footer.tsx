@@ -57,7 +57,7 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
     links: [
       { label: "Últimas noticias", href: "/noticias" },
       { label: "Sala de prensa", href: "/noticias#prensa" },
-      { label: "Obras en marcha", href: "/obras" },
+      { label: "Obras en marcha", href: "/gestion-alcalde#explorador" },
       { label: "Puerto Cortés", href: "/turismo" },
     ],
   },

@@ -20,6 +20,7 @@ import {
   Trophy,
   ShieldCheck,
   Building2,
+  UserRound,
 } from "lucide-react";
 import { tourismCategories } from "./tourism";
 
@@ -169,6 +170,12 @@ export const mainNav: NavItem[] = [
           title: "Institución",
           links: [
             {
+              label: "Gestión del Alcalde",
+              href: "/gestion-alcalde",
+              description: "Avances, obras e inversión de Giancarlo Rodríguez.",
+              icon: UserRound,
+            },
+            {
               label: "Corporación Municipal",
               href: "/municipalidad#corporacion",
               description: "Autoridades y organización.",
@@ -221,8 +228,8 @@ export const mainNav: NavItem[] = [
     },
   },
   {
-    label: "Servicios",
-    href: "/servicios",
+    label: "Alcaldía",
+    href: "/gestion-alcalde",
   },
   {
     label: "Puerto Cortés",
@@ -250,8 +257,8 @@ export const mainNav: NavItem[] = [
     },
   },
   {
-    label: "Obras",
-    href: "/obras",
+    label: "Servicios",
+    href: "/servicios",
   },
   {
     label: "Noticias",

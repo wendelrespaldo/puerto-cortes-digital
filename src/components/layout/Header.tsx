@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { AnimatePresence } from "framer-motion";
-import { Phone, Search, UserRound, Menu, ChevronDown, Palmtree } from "lucide-react";
+import { Phone, Search, UserRound, Menu, ChevronDown } from "lucide-react";
 import { FacebookIcon, InstagramIcon, XIcon } from "@/components/shared/SocialIcons";
 import { mainNav } from "@/data/nav";
 import { useSearch } from "@/components/shared/SearchProvider";
@@ -129,7 +129,6 @@ export default function Header() {
                         (item.highlight ? "bg-pc-blue-50" : "bg-pc-green-50 text-pc-green-800")
                     )}
                   >
-                    {item.highlight && <Palmtree className="size-3.5 text-pc-amber-500" />}
                     <span className={item.highlight ? "font-semibold" : undefined}>
                       {item.label}
                     </span>

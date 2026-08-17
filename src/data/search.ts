@@ -1,7 +1,7 @@
 export type SearchResultGroup =
   | "TRÁMITES"
   | "SERVICIOS"
-  | "OBRAS"
+  | "GESTIÓN DEL ALCALDE"
   | "NOTICIAS"
   | "PUERTO CORTÉS"
   | "DOCUMENTOS";
@@ -111,27 +111,34 @@ export const searchIndex: SearchResult[] = [
     keywords: ["solicitud", "poda", "bacheo", "iluminacion"],
   },
 
-  // OBRAS
+  // GESTIÓN DEL ALCALDE
   {
-    id: "o1",
-    group: "OBRAS",
-    title: "Pavimentación y drenaje — La Roca",
-    href: "/obras",
-    keywords: ["obras", "pavimentacion", "la roca"],
+    id: "ga1",
+    group: "GESTIÓN DEL ALCALDE",
+    title: "Gestión del Alcalde — Giancarlo Rodríguez",
+    href: "/gestion-alcalde",
+    keywords: ["alcalde", "giancarlo rodriguez", "gestion municipal", "avances"],
   },
   {
-    id: "o2",
-    group: "OBRAS",
-    title: "Losa y canales — Barrio San Ramón",
-    href: "/obras",
-    keywords: ["canales", "san ramon", "drenaje"],
+    id: "ga2",
+    group: "GESTIÓN DEL ALCALDE",
+    title: "Buscador de proyectos y acciones",
+    href: "/gestion-alcalde#explorador",
+    keywords: ["proyectos", "obras", "obras del alcalde", "pavimentacion", "buscador", "filtros"],
   },
   {
-    id: "o3",
-    group: "OBRAS",
-    title: "Mapa de obras en ejecución",
-    href: "/obras#mapa-obras",
-    keywords: ["mapa de obras", "obras cerca de ti"],
+    id: "ga3",
+    group: "GESTIÓN DEL ALCALDE",
+    title: "Transferencia Presupuestaria No. 4",
+    href: "/gestion-alcalde#transparencia",
+    keywords: ["transferencia presupuestaria", "115 millones", "corporacion municipal"],
+  },
+  {
+    id: "ga4",
+    group: "GESTIÓN DEL ALCALDE",
+    title: "Gobierno de puertas abiertas",
+    href: "/gestion-alcalde#puertas-abiertas",
+    keywords: ["puertas abiertas", "atencion al ciudadano", "patronatos"],
   },
 
   // NOTICIAS
@@ -257,7 +264,7 @@ function matches(item: SearchResult, normalizedQuery: string): boolean {
 export const searchGroups: SearchResultGroup[] = [
   "TRÁMITES",
   "SERVICIOS",
-  "OBRAS",
+  "GESTIÓN DEL ALCALDE",
   "NOTICIAS",
   "PUERTO CORTÉS",
   "DOCUMENTOS",

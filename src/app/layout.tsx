@@ -6,6 +6,7 @@ import { SearchProvider } from "@/components/shared/SearchProvider";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import FloatingActions from "@/components/shared/FloatingActions";
+import MunicipalChatWidget from "@/components/shared/MunicipalChatWidget";
 
 const heading = Sora({
   variable: "--font-heading",
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             </main>
             <Footer />
             <FloatingActions />
+            <MunicipalChatWidget />
           </SearchProvider>
         </TooltipProvider>
       </body>

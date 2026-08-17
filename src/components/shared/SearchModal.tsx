@@ -15,8 +15,8 @@ import {
   Wrench,
   Newspaper,
   FileStack,
-  HardHat,
   Palmtree,
+  UserRound,
   ArrowRight,
   X,
   CornerDownLeft,
@@ -32,7 +32,7 @@ import { cn } from "@/lib/utils";
 const groupIcons: Record<SearchResultGroup, React.ElementType> = {
   TRÁMITES: FileText,
   SERVICIOS: Wrench,
-  OBRAS: HardHat,
+  "GESTIÓN DEL ALCALDE": UserRound,
   NOTICIAS: Newspaper,
   "PUERTO CORTÉS": Palmtree,
   DOCUMENTOS: FileStack,

@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Este repo vive en un volumen externo que genera archivos AppleDouble
+    // (ver next.config.ts) — no son código del proyecto.
+    "**/._*",
   ]),
 ]);
 
